@@ -6,13 +6,13 @@ export default class BinarySearchTree {
   }
 
   addValue = (value, tree = this.tree) => {
-    if (value > this.tree.value) {
+    if (value > tree.value) {
       if (tree.right) {
         this.addValue(value, tree.right);
       } else {
         tree.right = new BinarySearchNode(value);
       }
-    } else if (value < this.tree.value) {
+    } else if (value < tree.value) {
       if (tree.left) {
         this.addValue(value, tree.left);
       } else {
@@ -37,4 +37,3 @@ export default class BinarySearchTree {
     );
   };
 }
-
