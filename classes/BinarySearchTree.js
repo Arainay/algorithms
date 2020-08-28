@@ -36,4 +36,17 @@ export default class BinarySearchTree {
       Math.abs(closest - value) >= Math.abs(tree.value - value) ? tree.value : closest
     );
   };
+
+  getBrunchSums = (tree = this.tree, currentSum = 0, sums = []) => {
+    if (!tree) {
+      return sums;
+    }
+
+    if (!tree.left && !tree.right) {
+      return [...sums, currentSum + tree.value];
+    }
+
+    const leftSums = this.getBrunchSums(tree.left, tree.value + currentSum, sums);
+    return this.getBrunchSums(tree.right, tree.value + currentSum, leftSums);
+  };
 }
