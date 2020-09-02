@@ -1,11 +1,15 @@
 export default function getNthFibonacci(n) {
-  if (n <= 1) {
-    return 0;
-  }
+  const memo = new Map();
+  memo.set(1, 0);
+  memo.set(2, 1);
 
-  if (n === 2 || n === 3) {
-    return 1;
-  }
+  const computeNthFibonacci = (n) => {
+    if (memo.get(n) === undefined) {
+      memo.set(n, computeNthFibonacci(n - 1) + computeNthFibonacci(n - 2));
+    }
 
-  return getNthFibonacci(n - 2) + getNthFibonacci(n - 1);
+    return memo.get(n);
+  };
+
+  return computeNthFibonacci(n);
 }
