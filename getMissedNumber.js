@@ -1,7 +1,7 @@
 export default function getMissedNumber(list) {
   const [min, max, listSum] = list.reduce(
     ([min, max, sum], item) => [item < min ? item : min, item > max ? item : max, sum + item],
-    [Infinity, Number.NEGATIVE_INFINITY, 0]
+    [Infinity, -Infinity, 0]
   );
 
   let sum = 0;
