@@ -4,7 +4,7 @@ export default function getNthFibonacci(n) {
   memo.set(2, 1);
 
   const computeNthFibonacci = (n) => {
-    if (memo.get(n) === undefined) {
+    if (!memo.has(n)) {
       memo.set(n, computeNthFibonacci(n - 1) + computeNthFibonacci(n - 2));
     }
 
